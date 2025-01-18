@@ -28,6 +28,6 @@ session.add(item)
 session.commit()
 ```
 ## Contributing
-This library is inspired by the [pgvector-python](https://github.com/pgvector/pgvector-python) and is built to bring similar functionality to MariaDB.
-Any contributions, bug reports, or improvements are welcome!
-Feel free to open issues or submit pull requests.
+- This library is inspired by the [pgvector-python](https://github.com/pgvector/pgvector-python) and is built to bring similar functionality to MariaDB.  
+- Any contributions, bug reports, or improvements are welcome!  
+- Feel free to open issues or submit pull requests.
