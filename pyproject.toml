@@ -1,0 +1,19 @@
+[project]
+name = "mariadb-vector"
+version = "0.1.0"
+description = "Integrate MariaDB's VECTOR type with SQL Alchemy and SQL Model"
+authors = [
+    {name = "heonjin", email = "koun012@naver.com"},
+]
+dependencies = ["sqlalchemy>=2.0.37"]
+requires-python = ">=3.10"
+readme = "README.md"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+
+[tool.pdm]
+distribution = true
