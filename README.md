@@ -1,15 +1,14 @@
 # MariaDB Vector
 Integrate MariaDB's VECTOR type with SQL Alchemy and SQL Model
 
-# Installation
+## Installation
 ```bash
 pdm add git+https://github.com/kwon-evan/sqlalchemy-mariadb-vector.git
 # or
 pip install git+https://github.com/kwon-evan/sqlalchemy-mariadb-vector.git
 ```
 
-# Usage
-## SQL Model
+## Usage
 
 ### Add a vector column
 ```python
@@ -57,6 +56,6 @@ with Session(engine) as session:
 ```
 
 # Contributing
-This library is inspired by the [pgvector-python](https://github.com/pgvector/pgvector-python) and is built to bring similar functionality to MariaDB.
-Any contributions, bug reports, or improvements are welcome!
-Feel free to open issues or submit pull requests.
+- This library is inspired by the [pgvector-python](https://github.com/pgvector/pgvector-python) and is built to bring similar functionality to MariaDB.
+- Any contributions, bug reports, or improvements are welcome!
+- Feel free to open issues or submit pull requests.
