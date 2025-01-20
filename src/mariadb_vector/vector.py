@@ -23,8 +23,17 @@ class VECTOR(UserDefinedType):
             return "VECTOR"
         return "VECTOR(%d)" % self.size
 
+    def validate_vector(self, value):
+        if not isinstance(value, (list, tuple)):
+            raise ValueError("Vector value must be a list or tuple of floats.")
+        if len(value) != self.size:
+            raise ValueError(f"Vector size must be {self.size}, but got {len(value)}.")
+        if not all(isinstance(v, (int, float)) for v in value):
+            raise ValueError("All elements in the vector must be int or float.")
+
     def bind_processor(self, dialect):
         def process(value):
+            self.validate_vector
             return str(value)
 
         return process
@@ -34,10 +43,14 @@ class VECTOR(UserDefinedType):
 
     def result_processor(self, dialect, coltype):
         def process(value):
-            if isinstance(value, bytes):
-                num_floats = len(value) // 4
-                float_values = struct.unpack(f"{num_floats}f", value)
-                return list(float_values)
+            try:
+                if isinstance(value, bytes):
+                    num_floats = len(value) // 4
+                    float_values = struct.unpack(f"{num_floats}f", value)
+                    return list(float_values)
+            except Exception as e:
+                raise ValueError(f"Error processing vector value: {value}. {e}")
+            return value
 
         return process
 
