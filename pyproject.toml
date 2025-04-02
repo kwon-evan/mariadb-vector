@@ -5,10 +5,25 @@ description = "Integrate MariaDB's VECTOR type with SQL Alchemy and SQL Model"
 authors = [
     {name = "heonjin", email = "kwonhj9416@gmail.com"},
 ]
+maintainers = [
+    {name = "heonjin", email = "kwonhj9416@gmail.com"},
+]
 dependencies = ["sqlalchemy>=2.0.37"]
 requires-python = ">=3.10"
 readme = "README.md"
 license = {text = "MIT"}
+keywords = ["mariadb", "vector", "sql", "sqlalchemy", "sqlmodel"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+
+[project.urls]
+Documentation = "https://github.com/kwon-evan/mariadb-vector?tab=readme-ov-file#usage"
+Repository = "https://github.com/kwon-evan/mariadb-vector.git"
+Issues = "https://github.com/kwon-evan/mariadb-vector/issues"
 
 [build-system]
 requires = ["setuptools>=61"]

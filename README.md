@@ -3,9 +3,9 @@ Integrate MariaDB's VECTOR type with SQL Alchemy and SQL Model
 
 ## Installation
 ```bash
-pdm add git+https://github.com/kwon-evan/sqlalchemy-mariadb-vector.git
+pdm add git+https://github.com/kwon-evan/mariadb-vector.git
 # or
-pip install git+https://github.com/kwon-evan/sqlalchemy-mariadb-vector.git
+pip install git+https://github.com/kwon-evan/mariadb-vector.git
 ```
 
 ## Usage
