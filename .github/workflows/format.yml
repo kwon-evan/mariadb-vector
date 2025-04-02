@@ -19,16 +19,16 @@ jobs:
           args: "--version"
 
       - name: Sort imports
-        run: ruff check --select I --fix ./admin-backend/src ./board-backend/src
+        run: ruff check --select I --fix
 
       - name: Fix Flake8 Rules
-        run: ruff check --select F --fix ./admin-backend/src ./board-backend/src
+        run: ruff check --select F --fix
 
       - name: Fix Ruff Rules
-        run: ruff check --select RUF --fix ./admin-backend/src ./board-backend/src
+        run: ruff check --select RUF --fix
 
       - name: Format code
-        run: ruff format ./admin-backend/src ./board-backend/src
+        run: ruff format
 
       - name: Commit changes
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
