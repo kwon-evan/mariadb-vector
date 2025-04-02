@@ -1,6 +1,6 @@
 [project]
 name = "mariadb-vector"
-version = "0.2.0"
+version = "0.3.0"
 description = "Integrate MariaDB's VECTOR type with SQL Alchemy and SQL Model"
 authors = [
     {name = "heonjin", email = "kwonhj9416@gmail.com"},
