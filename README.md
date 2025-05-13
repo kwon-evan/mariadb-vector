@@ -53,6 +53,65 @@ with Session(engine) as session:
     print(result)
 ```
 
+## Diagram
+```mermaid
+flowchart TB
+    subgraph "User Layer"
+        App["User Application (Python code)"]:::python
+    end
+
+    subgraph "ORM & Extension Layer"
+        ORM["SQLModel / SQLAlchemy"]:::orm
+        subgraph "MariaDB-Vector Library"
+            LibRoot["MariaDB-Vector Library"]:::library
+            LibInit["__init__.py"]:::library
+            VecType["Vector Type"]:::library
+            VecFuncs["Vector Functions"]:::library
+        end
+    end
+
+    subgraph "Database Layer"
+        DB["MariaDB Database with VECTOR support"]:::db
+    end
+
+    subgraph "Build & CI"
+        Config1["pyproject.toml"]:::config
+        Config2["pdm.lock"]:::config
+        WFfmt[".github/workflows/format.yml"]:::config
+        WFrelease[".github/workflows/release.yml"]:::config
+        Readme["README.md"]:::config
+        License["LICENSE"]:::config
+    end
+
+    App -->|"imports extension"| LibRoot
+    App -->|"executes session operations"| ORM
+    LibRoot --> LibInit
+    LibRoot --> VecType
+    LibRoot --> VecFuncs
+    VecType -->|"integrates with ORM"| ORM
+    VecFuncs -->|"integrates with ORM"| ORM
+    ORM -->|"compiles SQL"| DB
+    DB -->|"returns results"| ORM
+    ORM -->|"maps to models"| App
+
+    click LibRoot "https://github.com/kwon-evan/mariadb-vector/tree/main/src/mariadb_vector"
+    click VecType "https://github.com/kwon-evan/mariadb-vector/blob/main/src/mariadb_vector/vector.py"
+    click VecFuncs "https://github.com/kwon-evan/mariadb-vector/blob/main/src/mariadb_vector/functions.py"
+    click LibInit "https://github.com/kwon-evan/mariadb-vector/blob/main/src/mariadb_vector/__init__.py"
+    click Config1 "https://github.com/kwon-evan/mariadb-vector/blob/main/pyproject.toml"
+    click Config2 "https://github.com/kwon-evan/mariadb-vector/blob/main/pdm.lock"
+    click WFfmt "https://github.com/kwon-evan/mariadb-vector/blob/main/.github/workflows/format.yml"
+    click WFrelease "https://github.com/kwon-evan/mariadb-vector/blob/main/.github/workflows/release.yml"
+    click Readme "https://github.com/kwon-evan/mariadb-vector/blob/main/README.md"
+    click License "https://github.com/kwon-evan/mariadb-vector/tree/main/LICENSE"
+
+    classDef python fill:#D0E6FB,stroke:#0366D6,color:#0366D6;
+    classDef library fill:#E8F4FC,stroke:#1B82D1,color:#1B82D1;
+    classDef orm fill:#E6F9E6,stroke:#2C9E2C,color:#2C9E2C;
+    classDef db fill:#FFF4E5,stroke:#E69100,color:#E69100;
+    classDef config fill:#F0F0F0,stroke:#666666,color:#333333;
+```
+
 # Contributing
 - This library is inspired by the [pgvector-python](https://github.com/pgvector/pgvector-python) and is built to bring similar functionality to MariaDB.
 - Any contributions, bug reports, or improvements are welcome!
